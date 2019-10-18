@@ -225,16 +225,10 @@ public class editPol extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbms_project", "root", "root");
             PreparedStatement ps = con.prepareStatement("DELETE FROM ginxpolling WHERE p_id=?");
             ps.setString(1, p_id);
-            try {
-                if(ps.execute())
-                JOptionPane.showMessageDialog(null, "Booth Deletion Successful.");
-                else
-                    JOptionPane.showMessageDialog(null, "Booth Deletion Not Successful.");
-            } catch (HeadlessException | SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error Deleting. Contact Administrator");
-            }
+            ps.execute();
+                    JOptionPane.showMessageDialog(null, "Booth Deletion Successful.");
         } catch (HeadlessException | ClassNotFoundException | SQLException e) {
-            System.out.println(e);
+            System.out.println("Booth Deletion Not Successful.");
         }// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
